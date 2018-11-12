@@ -14,23 +14,23 @@ int instr_trans(char *op, char *args, char* mcode)
 	
 	while(args[i]!=NULL){
 		if(args[i]==','){
-			if((args[i+1]=='%')==0 && (args[0]=='%') )//1
-				mcode="89";
+			if((args[i+1]=='%') && (args[0]=='%') )//1
+				strcpy(mcode,"89");
 			else if(args[i+1]=='%' && (args[i-1]==')'))//2,3
-				mcode="8b";
+				strcpy(mcode,"8b");
 			else if(args[i+1]=='%' && args[0]=='0')//4
-				mcode="a1";
+				strcpy(mcode,"a1");
 			else if(args[i+1]=='0' && args[0]=='%')//5
-				mcode="a3";
+				strcpy(mcode,"a3");
                		else if((args[i+1]=='%') && (args[0]=='$')){  //6
 				if(args[i+3]=='a')
-					mcode="b8";
+					strcpy(mcode,"b8");
 				else if(args[i+3]=='c')
-					mcode="b9";
+					strcpy(mcode,"b9");
 				else if(args[i+3]=='d')
-					mcode="ba";
+					strcpy(mcode,"ba");
 				else if(args[i+3]=='b')
-					mcode="bb";
+					strcpy(mcode,"bb");
 			}
 		}
 	
